@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "804592188556",
+    "project_id": "ramadan-companion-app-bacfc",
+    "storage_bucket": "ramadan-companion-app-bacfc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804592188556:android:a7c09b999c63ca1fd9cfa9",
+        "android_client_info": {
+          "package_name": "com.example.ramadancompanionapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUzx4MMYPW6r2-f87569hSye-y__y3kBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
