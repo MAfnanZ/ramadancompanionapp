@@ -13,7 +13,6 @@ class AuthWrapper extends StatelessWidget {
     return Consumer<AuthProvider>(
       builder: (context, authProvider, child) {
         final state = authProvider.state;
-        print(state);
         if (state is AuthInitial || state is AuthLoading) {
           return Scaffold(
               body: Center(
@@ -33,7 +32,7 @@ class AuthWrapper extends StatelessWidget {
         }
 
         if (state is AuthError) {
-          // show snackbar once
+          // show error snackbar once
           WidgetsBinding.instance.addPostFrameCallback((_) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
