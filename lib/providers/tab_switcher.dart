@@ -9,4 +9,9 @@ class TabSwitcher with ChangeNotifier {
     _page = newPage;
     notifyListeners();
   }
+
+  void reset() {
+    _page = 0;
+    notifyListeners();
+  }
 }

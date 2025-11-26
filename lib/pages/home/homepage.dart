@@ -21,6 +21,7 @@ class _HomepageState extends State<Homepage> {
     final authProvider = Provider.of<AuthProvider>(context);
     final prayerProvider =
         Provider.of<PrayerProvider>(context);
+    final tabSwitcher = Provider.of<TabSwitcher>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('RAMADAN COMPANION'),
@@ -33,6 +34,7 @@ class _HomepageState extends State<Homepage> {
             onPressed: () {
               authProvider.logout();
               prayerProvider.clear();
+              tabSwitcher.reset();
             },
           ),
         ],

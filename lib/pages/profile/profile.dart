@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ramadancompanionapp/providers/tab_switcher.dart';
+import 'package:ramadancompanionapp/services/api/presentation/provider/prayer_provider.dart';
 import 'package:ramadancompanionapp/services/auth/presentation/provider/auth_provider.dart';
 import 'package:ramadancompanionapp/widgets/custom_button.dart';
 
@@ -14,6 +16,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
+    final prayerProvider =
+        Provider.of<PrayerProvider>(context);
+    final tabSwitcher = Provider.of<TabSwitcher>(context);
     final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.all(12.0),
@@ -85,8 +90,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     CustomButton(
                         text: 'L O G O U T',
-                        onPressed: () =>
-                            authProvider.logout()),
+                        onPressed: () {
+                          authProvider.logout();
+                          prayerProvider.clear();
+                          tabSwitcher.reset();
+                        }),
                   ],
                 ),
               ),
