@@ -44,7 +44,7 @@ password: 1234qwerT
 2. Apk directory
     build\app\outputs\flutter-apk\app-release.apk
 
-#### App Structure
+### App Structure
 - lib/main.dart: App entry point, initializes providers.
 - lib/pages/: Screens for navigation, including Prayer Times, Ramadan      Calendar, Qibla and Profile pages
 - lib/widgets/: Reusable UI components like buttons and list tiles.
