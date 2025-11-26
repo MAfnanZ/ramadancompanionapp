@@ -23,8 +23,10 @@ class _QiblaPageState extends State<QiblaPage> {
   }
 
   void _fetchPermission() async {
+    print('fetching permission');
     Permission.locationWhenInUse.request().then((status) {
       if (mounted) {
+        print(status);
         setState(() {
           _hasPermission =
               (status == PermissionStatus.granted);
@@ -187,15 +189,27 @@ class _QiblaPageState extends State<QiblaPage> {
   // permission widget
   Widget _buildPermission() {
     return Center(
-      child: CustomButton(
-        onPressed: () {
-          Permission.locationWhenInUse
-              .request()
-              .then((value) {
-            _fetchPermission();
-          });
-        },
-        text: 'Request Permission',
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          color: Colors.white70,
+          borderRadius: BorderRadius.circular(32.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomButton(
+              onPressed: () {
+                Permission.locationWhenInUse
+                    .request()
+                    .then((value) {
+                  _fetchPermission();
+                });
+              },
+              text: 'Request Permission',
+            ),
+          ],
+        ),
       ),
     );
   }
