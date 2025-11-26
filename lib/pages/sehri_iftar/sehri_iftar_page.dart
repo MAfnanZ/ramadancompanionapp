@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ramadancompanionapp/services/api/presentation/provider/prayer_provider.dart';
-import 'package:ramadancompanionapp/services/auth/presentation/provider/auth_provider.dart';
 import 'package:ramadancompanionapp/tools/time.dart';
 import 'package:ramadancompanionapp/widgets/custom_button.dart';
 import 'package:ramadancompanionapp/widgets/custom_textfield.dart';
@@ -126,46 +125,106 @@ class _SehriIftarPageState extends State<SehriIftarPage> {
                             .colorScheme
                             .primaryContainer,
                       ),
-                      child: DataTable(
-                        columnSpacing: 20,
-                        dataRowMaxHeight: 60,
-                        headingRowColor:
-                            WidgetStateProperty.all(
-                                Colors.green),
-                        headingTextStyle: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        columns: const [
-                          DataColumn(
-                            label: Text('Hijri'),
+                      child: Column(
+                        spacing: 10,
+                        children: [
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment
+                                    .spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    'Hijri: ',
+                                    style: textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    sehriIftarTimes
+                                        .first.hijriYear,
+                                    style: textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                      color: Colors.black,
+                                      fontWeight:
+                                          FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Gregorian: ',
+                                    style: textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    sehriIftarTimes.first
+                                        .gregorianYear,
+                                    style: textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                      color: Colors.black,
+                                      fontWeight:
+                                          FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          DataColumn(
-                            label: Text('Gregorian'),
-                          ),
-                          DataColumn(
-                            label: Text('Day'),
-                          ),
-                          DataColumn(
-                            label: Text('Imsak'),
-                          ),
-                          DataColumn(
-                            label: Text('Iftar'),
+                          DataTable(
+                            columnSpacing: 20,
+                            dataRowMaxHeight: 60,
+                            headingRowColor:
+                                WidgetStateProperty.all(
+                                    Colors.green),
+                            headingTextStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            columns: const [
+                              DataColumn(
+                                label: Text('Hijri'),
+                              ),
+                              DataColumn(
+                                label: Text('Gregorian'),
+                              ),
+                              DataColumn(
+                                label: Text('Day'),
+                              ),
+                              DataColumn(
+                                label: Text('Imsak'),
+                              ),
+                              DataColumn(
+                                label: Text('Iftar'),
+                              ),
+                            ],
+                            rows:
+                                sehriIftarTimes.map((day) {
+                              return DataRow(cells: [
+                                DataCell(
+                                    Text(day.hijriDate)),
+                                DataCell(Text(
+                                    day.gregorianDate)),
+                                DataCell(Text(
+                                    day.gregorianWeekday)),
+                                DataCell(Text(
+                                    cleanTime(day.imsak))),
+                                DataCell(Text(cleanTime(
+                                    day.maghrib))),
+                              ]);
+                            }).toList(),
                           ),
                         ],
-                        rows: sehriIftarTimes.map((day) {
-                          return DataRow(cells: [
-                            DataCell(Text(day.hijriDate)),
-                            DataCell(
-                                Text(day.gregorianDate)),
-                            DataCell(
-                                Text(day.gregorianWeekday)),
-                            DataCell(
-                                Text(cleanTime(day.imsak))),
-                            DataCell(Text(
-                                cleanTime(day.maghrib))),
-                          ]);
-                        }).toList(),
                       ));
                 }
 

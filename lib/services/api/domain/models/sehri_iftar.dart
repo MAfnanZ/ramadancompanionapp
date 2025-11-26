@@ -6,6 +6,8 @@ class SehriIftarTimes {
   final String gregorianDate;
   final String gregorianWeekday;
   final String hijriDate;
+  final String gregorianYear;
+  final String hijriYear;
 
   SehriIftarTimes({
     required this.imsak,
@@ -13,6 +15,8 @@ class SehriIftarTimes {
     required this.gregorianDate,
     required this.gregorianWeekday,
     required this.hijriDate,
+    required this.gregorianYear,
+    required this.hijriYear,
   });
 
   factory SehriIftarTimes.fromJson(JsonMap json) {
@@ -23,6 +27,8 @@ class SehriIftarTimes {
       gregorianWeekday: json["date"]["gregorian"]["weekday"]
           ["en"],
       hijriDate: json["date"]["hijri"]["date"],
+      gregorianYear: json["date"]["gregorian"]["year"],
+      hijriYear: json["date"]["hijri"]["year"],
     );
   }
 }

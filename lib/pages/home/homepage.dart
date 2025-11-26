@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ramadancompanionapp/pages/prayer_times/prayer_times_page.dart';
-import 'package:ramadancompanionapp/pages/suhoor_iftar.dart/sehri_iftar_page.dart';
+import 'package:ramadancompanionapp/pages/profile/profile.dart';
+import 'package:ramadancompanionapp/pages/qibla/qibla_page.dart';
+import 'package:ramadancompanionapp/pages/sehri_iftar/sehri_iftar_page.dart';
 import 'package:ramadancompanionapp/providers/tab_switcher.dart';
 import 'package:ramadancompanionapp/services/api/presentation/provider/prayer_provider.dart';
 import 'package:ramadancompanionapp/services/auth/presentation/provider/auth_provider.dart';
@@ -39,7 +41,9 @@ class _HomepageState extends State<Homepage> {
           builder: (context, tab, child) {
         return [
           PrayerTimesPage(),
-          const SehriIftarPage(),
+          SehriIftarPage(),
+          QiblaPage(),
+          ProfilePage(),
         ][tab.page];
       }),
       bottomNavigationBar: Consumer<TabSwitcher>(
@@ -54,6 +58,10 @@ class _HomepageState extends State<Homepage> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.list),
                   label: 'Sehri/Iftar'),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                      Icons.compass_calibration_outlined),
+                  label: 'Qibla'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),
                   label: 'Profile'),
