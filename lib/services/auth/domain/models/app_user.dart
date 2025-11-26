@@ -1,3 +1,5 @@
+import 'package:ramadancompanionapp/tools/typedefs.dart';
+
 class AppUser {
   final String uid;
   final String email;
@@ -10,7 +12,7 @@ class AppUser {
   });
 
   // convert AppUser to Map json
-  Map<String, dynamic> toJson() {
+  JsonMap toJson() {
     return {
       'uid': uid,
       'email': email,
@@ -19,7 +21,7 @@ class AppUser {
   }
 
   // convert Map json to AppUser
-  factory AppUser.fromJson(Map<String, dynamic> jsonUser) {
+  factory AppUser.fromJson(JsonMap jsonUser) {
     return AppUser(
       uid: jsonUser['uid'],
       email: jsonUser['email'],

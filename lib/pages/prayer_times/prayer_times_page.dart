@@ -28,7 +28,7 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
 
     //ensure fields are filled
     if (city.isNotEmpty && country.isNotEmpty) {
-      prayerProvider.getPrayerTimes(city, country);
+      prayerProvider.getPrayerTimesAndNext(city, country);
     } else {
       //show error - fill all fields
       ScaffoldMessenger.of(context).showSnackBar(
@@ -38,6 +38,13 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
         ),
       );
     }
+  }
+
+  @override
+  void dispose() {
+    cityController.dispose();
+    countryController.dispose();
+    super.dispose();
   }
 
   @override
@@ -201,10 +208,14 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
                             trailing: time["Isha"]),
                         Divider(),
                         CustomTile(
-                            title: "Next Prayer Time",
-                            subtitle: nextTime.keys.first,
-                            trailing:
-                                nextTime.values.first),
+                          backgroundColor: Colors.green,
+                          title: "Next Prayer Time",
+                          titleColor: Colors.white,
+                          subtitle: nextTime.keys.first,
+                          subtitleColor: Colors.white,
+                          trailing: nextTime.values.first,
+                          trailingColor: Colors.white,
+                        ),
                       ],
                     ),
                   );
