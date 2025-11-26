@@ -23,10 +23,8 @@ class _QiblaPageState extends State<QiblaPage> {
   }
 
   void _fetchPermission() async {
-    print('fetching permission');
     Permission.locationWhenInUse.request().then((status) {
       if (mounted) {
-        print(status);
         setState(() {
           _hasPermission =
               (status == PermissionStatus.granted);
